@@ -1,0 +1,12 @@
+{
+  "assembly_mu": 540,
+  "assembly_sigma": 25,
+  "cleaning_mu": 180,
+  "cleaning_sigma": 20,
+  "inspection_mu": 60,
+  "inspection_sigma": 14,
+  "rework_mu": 300,
+  "rework_sigma": 40,
+  "fail_rate": 0.12,
+  "arrival_rate": 6.25
+}
