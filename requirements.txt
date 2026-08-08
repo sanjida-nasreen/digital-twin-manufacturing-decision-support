@@ -1,0 +1,19 @@
+# scikit-learn is a HARD pin, not a floor.
+#
+# p1_artifacts/calibrator.joblib was pickled with scikit-learn 1.5.1. Loading it
+# under 1.8.0 fails with:
+#     AttributeError: Can't get attribute '__pyx_unpickle_CyHalfSquaredError'
+# because GradientBoostingRegressor's internal loss classes were restructured
+# after 1.5.x. Do not relax this to >=.
+#
+# The pin is required to DESERIALIZE the committed artifact, not to reproduce
+# the numbers: running src/part1_calibrate.py from scratch under 1.5.1 and
+# 1.8.0 gives bit-identical metrics. If you regenerate artifacts under a newer
+# scikit-learn, update this pin to match whatever produced them.
+scikit-learn==1.5.1
+
+numpy>=1.26
+pandas>=2.0
+scipy>=1.11
+matplotlib>=3.7
+joblib>=1.3
