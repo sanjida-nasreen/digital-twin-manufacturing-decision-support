@@ -1,0 +1,28 @@
+CustomerBuffer.Capacity := W
+Supplier.Number := 50
+
+Cleaning.xDim := M1
+Inspection.xDim := M2
+NetRevenue := NetRevenue - 50000*(M1+M2)
+
+AssemblyData.fit
+CleaningData.fit
+InspectionData.fit
+
+var dist: string
+var mu, sigma: real
+
+dist := AssemblyData.Ranking["Distribution",1]
+mu := AssemblyData.StatData["value","mean"]
+sigma := AssemblyData.StatData["value","standard deviation"]
+Assembly.ProcTime.setTypeAndAttr(dist, mu, sigma)
+
+dist := CleaningData.Ranking["Distribution",1]
+mu := CleaningData.StatData["value","mean"]
+sigma := CleaningData.StatData["value","standard deviation"]
+Cleaning.ProcTime.setTypeAndAttr(dist, mu, sigma)
+
+dist := InspectionData.Ranking["Distribution",1]
+mu := InspectionData.StatData["value","mean"]
+sigma := InspectionData.StatData["value","standard deviation"]
+Inspection.ProcTime.setTypeAndAttr(dist, mu, sigma)
